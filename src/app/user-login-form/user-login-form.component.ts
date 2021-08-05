@@ -9,57 +9,44 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
-  styleUrls: ['./user-login-form.component.scss']
+  styleUrls: ['./user-login-form.component.scss'],
 })
 export class UserLoginFormComponent implements OnInit {
-
   @Input() userData = { Username: '', Password: '' };
-  /**
-   *
-   * @param fetchApiData
-   * @param dialogRef
-   * @param snackBar
-   * @param router
-   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar,
-    public router: Router) { }
+    public snackBar: MatSnackBar
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   /**
    * login user
    */
   // This is the function responsible for sending the form inputs to the backend
   userLogin(): void {
-    this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+    this.fetchApiData.userLogin(this.userData).subscribe(
+      (result) => {
+        // Logic for a successful user registration goes here! (To be implemented)
+        this.dialogRef.close();
+        localStorage.setItem('user', result.user.Username);
+        localStorage.setItem('token', result.token);
 
+        console.log(result.token);
 
-      // Logic for a successful user registration goes here! (To be implemented)
-      this.dialogRef.close();
-      localStorage.setItem('user', result.user.Username);
-      localStorage.setItem('token', result.token);
-
-      console.log(result.token);
-      //   localStorage.setItem('user',  );
-
-      this.snackBar.open(result, 'OK', {
-        duration: 2000
-      });
-    }, (result) => {
-      this.snackBar.open(result, 'OK', {
-        duration: 2000
-      });
-    });
+        this.snackBar.open(result, 'OK', {
+          duration: 2000,
+        });
+      },
+      (result) => {
+        this.snackBar.open(result, 'OK', {
+          duration: 2000,
+        });
+      }
+    );
   }
-
 }
