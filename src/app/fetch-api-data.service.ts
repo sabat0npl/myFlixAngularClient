@@ -13,7 +13,7 @@ const apiUrl = 'https://brunoza-api.herokuapp.com/';
 @Injectable({
   providedIn: 'root',
 })
-export class UserRegistrationService {
+export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
@@ -29,7 +29,7 @@ export class UserRegistrationService {
   userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(apiUrl + 'login', userDetails)
+      .post(apiUrl + 'login?Username=' +userDetails.Username + '&Password=' + userDetails.Password, null)
       .pipe(catchError(this.handleError));
   }
 
