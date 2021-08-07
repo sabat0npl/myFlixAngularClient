@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://brunoza-api.herokuapp.com/';
@@ -14,25 +15,47 @@ const apiUrl = 'https://brunoza-api.herokuapp.com/';
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  // Inject the HttpClient module to the constructor params
-  // This will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {}
-  // Making the api call for the user registration endpoint
-  public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
+  /**
+   *
+   * @param http
+   * @param router
+   */
+  constructor(private http: HttpClient, private router: Router) {}
+  /**
+   * API call to register new user account
+   * @param userDetails
+   * @returns
+   */
+  userRegistration(userDetails: any): Observable<any> {
     return this.http
       .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
+  /**
+   * Handles user login HTTP request
+   * @param userDetails
+   * @returns
+   */
 
   //User Login
   userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(apiUrl + 'login?Username=' +userDetails.Username + '&Password=' + userDetails.Password, null)
+      .post(
+        apiUrl +
+          'login?Username=' +
+          userDetails.Username +
+          '&Password=' +
+          userDetails.Password,
+        null
+      )
       .pipe(catchError(this.handleError));
   }
 
+  /**
+   * API call to fetch all movies in database
+   * @returns
+   */
   //Get All Movies
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
@@ -70,8 +93,6 @@ export class FetchApiDataService {
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
-
-  // get user info
 
   getUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
