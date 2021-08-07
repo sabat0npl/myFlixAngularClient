@@ -109,7 +109,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .post(apiUrl + `users/${user}/Movies/${id}`, id, {
+      .post(apiUrl + `users/${user}/${id}`, id, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -123,7 +123,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .delete(apiUrl + `users/${user}/Movies/${id}`, {
+      .delete(apiUrl + `users/${user}/${id}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),

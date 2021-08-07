@@ -1,0 +1,25 @@
+
+mat-card {
+  text-align: center;
+}
+
+mat-card-title {
+  text-align: justify;
+}
+
+mat-card-subtitle {
+  text-align: left;
+}
+
+.content {
+  padding-top: 35px;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+img {
+  align-self: center;
+  width: 100%;
+  object-fit: fit;
+}
