@@ -12,6 +12,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './user-profile-delete.component.html',
   styleUrls: ['./user-profile-delete.component.scss'],
 })
+/**
+ * This component will render the form to Update User Profile.
+ */
 export class UserProfileDeleteComponent implements OnInit {
 
   constructor(

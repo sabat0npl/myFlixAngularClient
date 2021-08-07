@@ -9,7 +9,9 @@ import { FetchApiDataService } from '../fetch-api-data.service'
   styleUrls: ['./user-profile-update.component.scss']
 })
 
-
+/**
+ * This component will render the form to Update User Profile.
+ */
 export class UserProfileUpdateComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
@@ -23,17 +25,18 @@ export class UserProfileUpdateComponent implements OnInit {
 
   ngOnInit(): void {
   }// edit user info
-
+    /**
+   * This method will contact an external API,
+   * and update the User Info in the Users array.
+   */
   editUser(): void {
     this.fetchApiData.EditUserInfo(this.userData).subscribe((resp) => {
       this.dialogRef.close();
-      console.log(resp);
       localStorage.setItem('user', resp.Username);
       this.snackBar.open('Profile updated successfully!', 'OK', {
         duration: 2000
       });
     }, (res) => {
-      console.log(res);
       this.snackBar.open(res, 'OK', {
         duration: 2000
       });
