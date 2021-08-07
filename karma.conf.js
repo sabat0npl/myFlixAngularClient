@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/myFlix-Angular-client'),
+      dir: require('path').join(__dirname, './coverage/myFlixAngularClient'),
       subdir: '.',
       reporters: [
         { type: 'html' },

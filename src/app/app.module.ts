@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,9 +35,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-     MovieCardComponent,
+    MovieCardComponent,
     WelcomePageComponent,
-     
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
@@ -50,13 +50,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule,MDBBootstrapModule,
-    AppRoutingModule, 
+    BrowserModule,
+    MDBBootstrapModule,
+    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,
-   
     MatButtonModule,
     MatCardModule,
     FlexLayoutModule,
@@ -65,7 +65,7 @@ const appRoutes: Routes = [
     MatDialogModule,
     FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

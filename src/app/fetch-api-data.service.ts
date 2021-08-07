@@ -11,9 +11,12 @@ import { Router } from '@angular/router';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://brunoza-api.herokuapp.com/';
+
+//User Registration
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
+
 export class FetchApiDataService {
   /**
    *
