@@ -46,8 +46,8 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
       this.userData = resp;
       this.user = resp;
-      console.log(resp.FavoriteMovies);
-      // this.favourite = resp.FavoriteMovies;
+      console.log(resp.Favourites);
+      // this.favourite = resp.Favourites;
       console.log(this.favourite);
       this.userData.Birthday = resp.Birthday.substr(0, 10);
 
@@ -84,7 +84,7 @@ export class UserProfileComponent implements OnInit {
 
   filterFavorites(): void {
     this.movies.forEach((movie: any) => {
-      if (this.user.FavoriteMovies.includes(movie._id)) {
+      if (this.user.Favourites.includes(movie._id)) {
         this.favourite.push(movie);
       }
     });

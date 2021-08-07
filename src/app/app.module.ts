@@ -34,9 +34,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MovieCardComponent,
+     MovieCardComponent,
     WelcomePageComponent,
-
+     
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
@@ -50,14 +50,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule,
-    MDBBootstrapModule,
-    AppRoutingModule,
+    BrowserModule,MDBBootstrapModule,
+    AppRoutingModule, 
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,
-
+   
     MatButtonModule,
     MatCardModule,
     FlexLayoutModule,
@@ -67,6 +66,6 @@ const appRoutes: Routes = [
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
