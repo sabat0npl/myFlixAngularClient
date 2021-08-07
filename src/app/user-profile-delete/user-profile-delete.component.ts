@@ -13,11 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-profile-delete.component.scss'],
 })
 export class UserProfileDeleteComponent implements OnInit {
-  /**
-   * @param fetchApiData
-   * @param snackBar
-   * @param router
-   */
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
